@@ -4,7 +4,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-    Alert, Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View,
+  Alert, Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View,
 } from "react-native";
 import { useTheme } from "../../context/ContextTheme";
 import { getCrimeById, newCrimeId, saveCrime, } from "../../storage/crimeStorage";
@@ -56,7 +56,6 @@ export default function CrimeDetailScreen() {
 
   const onDateChange = (event: DateTimePickerEvent, selected?: Date) => {
     if (Platform.OS === "android") {
-      // Android shows its own native dialog; close it either way.
       setShowPicker(false);
       if (event.type === "set" && selected) setDate(selected);
     } else if (selected) {
@@ -96,7 +95,6 @@ export default function CrimeDetailScreen() {
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="handled"
     >
-      {/* Photo (top left) + title + camera button */}
       <View style={styles.topRow}>
         <View
           style={[
@@ -137,7 +135,6 @@ export default function CrimeDetailScreen() {
         </View>
       </View>
 
-      {/* Details */}
       <Text style={[styles.label, { color: theme.subtext }]}>Details</Text>
       <TextInput
         style={[inputStyle, styles.detailsInput]}
@@ -149,7 +146,6 @@ export default function CrimeDetailScreen() {
         textAlignVertical="top"
       />
 
-      {/* Date button */}
       <Text style={[styles.label, { color: theme.subtext }]}>Date</Text>
       <Pressable
         onPress={() => setShowPicker(true)}
@@ -163,7 +159,6 @@ export default function CrimeDetailScreen() {
         </Text>
       </Pressable>
 
-      {/* Solved checkbox */}
       <Pressable
         onPress={() => setSolved((s) => !s)}
         style={styles.checkRow}
@@ -193,7 +188,6 @@ export default function CrimeDetailScreen() {
         </Text>
       </Pressable>
 
-      {/* Date picker: native dialog on Android, modal sheet on iOS */}
       {Platform.OS === "android" && showPicker && (
         <DateTimePicker
           value={date}

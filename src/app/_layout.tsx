@@ -57,7 +57,6 @@ function ThemedStack() {
           contentStyle: { backgroundColor: theme.background },
         }}
       >
-        {/* + and cog: index only has the +; cog is on index and detail */}
         <Stack.Screen
           name="index"
           options={{
@@ -72,7 +71,6 @@ function ThemedStack() {
             headerRight: () => <SettingsButton />,
           }}
         />
-        {/* No header buttons on settings */}
         <Stack.Screen name="settings" options={{ title: "Settings" }} />
       </Stack>
     </>
